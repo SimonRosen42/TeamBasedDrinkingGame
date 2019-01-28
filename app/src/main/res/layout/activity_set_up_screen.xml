@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetUpScreen">
+
+    <EditText
+        android:id="@+id/team4EditTxt"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Team 4"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="@+id/team2EditTxt"
+        app:layout_constraintTop_toTopOf="@+id/team3EditTxt"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player13TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Player 13"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/team4EditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/team4EditTxt"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player14TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 14"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player13TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player13TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player15TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 15"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player13TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player14TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player16TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 16"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player13TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player15TxtView"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/team2EditTxt"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Team 2"
+        android:textAlignment="viewStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/player5TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Player 5"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/team2EditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/team2EditTxt"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player6TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 6"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player5TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player5TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player7TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 7"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player5TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player6TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player8TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 8"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player5TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player7TxtView"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/team3EditTxt"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Team 3"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/team1EditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/player4TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player12TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 12"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player9TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player11TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player11TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 11"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player9TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player10TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player10TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 10"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player9TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player9TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player9TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Player 9"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/team3EditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/team3EditTxt"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player4TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 4"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player1TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player3TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player3TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 3"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player1TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player2TxtView"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/player2TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="12dp"
+        android:text="Player 2"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/player1TxtView"
+        app:layout_constraintTop_toBottomOf="@+id/player1TxtView"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/team1EditTxt"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Team 1"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/player1TxtView"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Player 1"
+        android:textAlignment="viewStart"
+        app:layout_constraintStart_toStartOf="@+id/team1EditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/team1EditTxt"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Let's Get Fucked Up!"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/challengesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Challenges"
+        android:textAllCaps="false"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/team1EditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/player12TxtView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="These require extra items besides alcohol to play."
+        app:layout_constraintStart_toStartOf="@+id/challengesTitle"
+        app:layout_constraintTop_toBottomOf="@+id/challengesTitle" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        style="@android:style/Widget.Holo.CompoundButton.CheckBox"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Flippy Cup"
+        app:layout_constraintStart_toStartOf="@+id/challengesTitle"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Coinage"
+        app:layout_constraintStart_toStartOf="@+id/checkBox"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Heads or Tails"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/checkBox" />
+
+    <CheckBox
+        android:id="@+id/checkBox4"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Red or Black"
+        app:layout_constraintStart_toStartOf="@+id/checkBox3"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+
+</android.support.constraint.ConstraintLayout>

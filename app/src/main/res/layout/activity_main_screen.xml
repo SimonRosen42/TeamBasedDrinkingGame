@@ -4,19 +4,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainScreen">
+    tools:context=".MainScreen"
+    android:id = "@+id/constraintLayout">
+
+    <Button
+        android:id="@+id/team4Btn"
+        android:layout_width="93dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="15dp"
+        android:text="Raucous Racoons"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/team3ScoreTxt"
+        app:layout_constraintTop_toTopOf="@+id/team1Btn" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/team4ScoreTxt"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="150"
+        android:textSize="26sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/team4Btn"
+        app:layout_constraintStart_toEndOf="@+id/team4Btn"
+        app:layout_constraintTop_toTopOf="@+id/team4Btn"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <Button
+        android:id="@+id/team3Btn"
+        android:layout_width="93dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="15dp"
+        android:text="Raucous Racoons"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/team2ScoreTxt"
+        app:layout_constraintTop_toTopOf="@+id/team1Btn" />
+
+    <TextView
+        android:id="@+id/team3ScoreTxt"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="150"
+        android:textSize="26sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/team3Btn"
+        app:layout_constraintStart_toEndOf="@+id/team3Btn"
+        app:layout_constraintTop_toTopOf="@+id/team3Btn"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <Button
+        android:id="@+id/team2Btn"
+        android:layout_width="93dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="15dp"
+        android:text="Raucous Racoons"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/team1ScoreTxt"
+        app:layout_constraintTop_toTopOf="@+id/team1Btn" />
+
+    <TextView
+        android:id="@+id/team2ScoreTxt"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="150"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/team2Btn"
+        app:layout_constraintStart_toEndOf="@+id/team2Btn"
+        app:layout_constraintTop_toTopOf="@+id/team2Btn"
+        app:layout_constraintVertical_bias="0.52" />
+
+    <TextView
+        android:id="@+id/instructionTxt"
+        android:layout_width="610dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Instruction"
+        android:textAlignment="center"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/team2Btn" />
+
+    <Button
+        android:id="@+id/team1Btn"
+        android:layout_width="93dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Raucous Racoons"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/team1ScoreTxt"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="150"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toBottomOf="@+id/team1Btn"
+        app:layout_constraintStart_toEndOf="@+id/team1Btn"
+        app:layout_constraintTop_toTopOf="@+id/team1Btn" />
+
+    <TextView
+        android:id="@+id/titleTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="18dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Title"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/instructionTxt"
+        app:layout_constraintEnd_toEndOf="@+id/instructionTxt"
+        app:layout_constraintStart_toStartOf="@+id/instructionTxt" />
+
+    <TextView
+        android:id="@+id/descriptionTxt"
+        android:layout_width="408dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="Description"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/instructionTxt"
+        app:layout_constraintStart_toStartOf="@+id/instructionTxt"
+        app:layout_constraintTop_toBottomOf="@+id/instructionTxt" />
+
 </android.support.constraint.ConstraintLayout>

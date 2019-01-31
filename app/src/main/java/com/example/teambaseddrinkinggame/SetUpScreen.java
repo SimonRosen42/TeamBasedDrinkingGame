@@ -1,10 +1,12 @@
 package com.example.teambaseddrinkinggame;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,8 +18,10 @@ public class SetUpScreen extends AppCompatActivity {
 
 
     private int noOfTeams, noOfPlayers;
-    //String playerNames[];
     Team teams[];
+
+    private Button startBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,35 @@ public class SetUpScreen extends AppCompatActivity {
         }
         createTeams(playerNames);
         setUpScreen();
+
+        startBtn = (Button) findViewById(R.id.startBtn);
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View v) {
+                //set names of teams
+                EditText team1Txt = (EditText) findViewById(R.id.team1EditTxt);
+                EditText team2Txt = (EditText) findViewById(R.id.team2EditTxt);
+                EditText team3Txt = (EditText) findViewById(R.id.team3EditTxt);
+                EditText team4Txt = (EditText) findViewById(R.id.team4EditTxt);
+                //team 1
+                teams[0].setName(team1Txt.getText().toString());
+                //team 2
+                teams[1].setName(team2Txt.getText().toString());
+                //team 3
+                if (noOfTeams>=3){
+                    teams[2].setName(team3Txt.getText().toString());
+                }
+                //team 4
+                if (noOfTeams==4){
+                    teams[3].setName(team4Txt.getText().toString());
+                }
+                //parse teams to next activity
+                Intent i = new Intent(SetUpScreen.this, MainScreen.class);
+                i.putExtra("teams", teams);
+                startActivity(i);
+            }
+        });
     }
 
     //show relevant TextViews and EditTexts

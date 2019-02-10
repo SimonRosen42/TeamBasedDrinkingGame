@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Random;
 
 public class MainScreen extends AppCompatActivity {
 
@@ -35,8 +33,19 @@ public class MainScreen extends AppCompatActivity {
     private ArrayList<String> targetedOnceOff;
     private ArrayList<String> targetedPersistent;
 
+    //current rules in plays
+    private ArrayList<Rule> currGeneralRules;
+    private ArrayList<Rule> currTargetedPersistent;
+
     private ArrayList<String[]> challenges; //2 element String arrays - {[Title],[Description]}
     private ArrayList<String[]> wouldYouRather; //2 element String arrays - {[Option 1],[Option 2]}
+
+    //rounds since last instruction/rule
+    private int roundsSinceLastChallenge;
+    private final int minRoundsSinceLastChallenge = 10;
+
+    private int roundsSinceLastGroupRule;
+    private final int minRoundsSinceLastGroupRule = 3;
 
     //team buttons
     private Button team1Btn, team2Btn, team3Btn, team4Btn;
@@ -80,18 +89,26 @@ public class MainScreen extends AppCompatActivity {
         descriptionTxt = findViewById(R.id.descriptionTxt);
 
         getDataFromFiles();
-        //updateInstruction();
-        //setUpCategories();
 
+        //otherwise throws error
+        currGeneralRules = new ArrayList<Rule>();
+        currTargetedPersistent = new ArrayList<Rule>();
+
+        roundsSinceLastChallenge=0;
+
+        updateInstruction(true);//show first rule
 
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         //menu_photos.setOnClickListener(new View.OnClickListener() {
         constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //updateInstruction();
+                updateInstruction(true);
+
+                //setUpGeneralRules();
+                //setUpChallenges();
                 //setUpCategories();
-                setUpDrinkIfYouHave();
+                //setUpDrinkIfYouHave();
             }
         });
 
@@ -136,94 +153,194 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
-    public void updateInstruction(){
+    //this method may be recalled encase a certain method is invalid i.e. if an instruction arraylist is empty
+    public void updateInstruction(Boolean isGameRoundIncr){
+        if (isGameRoundIncr){
+            //update round counts of persistent instructions
+            //general rules
+            for (int i = 0;i< currGeneralRules.size();i++){
+                currGeneralRules.get(i).incrRoundCount();
+            }
+            //targeted instructions
+            for (int i = 0; i< currTargetedPersistent.size();i++){
+                currTargetedPersistent.get(i).incrRoundCount();
+            }
+            //increment rounds since last challenge and group rule
+            roundsSinceLastChallenge++;
+            roundsSinceLastGroupRule++;
+        }
+        //TODO: Calculate rule/instruction probability weightings
+        //The methods called by this function should no longer recursively call this method to satisfy their specific rules
+        //i.e. the minimum no of rounds between challenges being enforced here not in the setUpChallenges method
+
         currGameType = getRandGameType();
         ConstraintLayout constLayout = (ConstraintLayout)findViewById(R.id.constraintLayout);
         int color = Color.WHITE;
         switch (currGameType){
             case Categories:
                 setUpCategories();
-                color = Color.GREEN;
+                //color = Color.GREEN;
                 break;
             case Challenges:
-                setUpCategories();
-                color = Color.RED;
+                setUpChallenges();
+                //color = Color.RED;
                 break;
             case DrinkIfYouHave:
                 setUpDrinkIfYouHave();
-                color=Color.BLUE;
+                //color=Color.BLUE;
                 break;
             case Targeted:
-                setUpTargeted();
-                color=Color.YELLOW;
+                setUpTargetedOnceOff();
+                //color=Color.YELLOW;
                 break;
             case GeneralRules:
                 setUpGeneralRules();
-                color=Color.CYAN;
+                //color=Color.CYAN;
                 break;
             case GroupInstructions:
                 setUpGroupInstructions();
-                color = Color.MAGENTA;
+                //color = Color.MAGENTA;
                 break;
             case WouldYouRather:
                 setUpWouldYouRather();
-                color=Color.DKGRAY;
+                //color=Color.DKGRAY;
                 break;
         }
         constLayout.setBackgroundColor(color);
         Log.d("Current Game Type",currGameType.getName());
     }
 
+    //change these to return true or false depending whether they still had instructions to update
     public void setUpCategories(){
         String instruction = "";
         if (categories.size()>0){
-            instruction = "Go around the group and name " + categories.get(0) + ", first person to mess up drinks, along with their team.";
+            instruction = "Go around the group and name " + categories.get(0);
             categories.remove(0);
+            //
+            titleTxt.setText("CATEGORIES");
+            instructionTxt.setText(instruction);
+            descriptionTxt.setText("First person to mess up drinks, along with their team.\nPlease click which team/s had to drink");
         } else{
             instruction = "All categories used up :/"; //just for error checking
         }
-        titleTxt.setText("CATEGORIES");
-        instructionTxt.setText(instruction);
-        descriptionTxt.setText("Please click which team/s had to drink.");
     }
 
     public void setUpChallenges(){
-        //
+        //set timer so that challenges cannot occur within a certain no of rounds than each other
+        String title ="";
+        String instruction = "";
+        if (roundsSinceLastChallenge>minRoundsSinceLastChallenge){
+            roundsSinceLastChallenge = 0;
+            if (challenges.size()>0){
+                title = ("challenge: " + challenges.get(0)[0]).toUpperCase();
+                instruction = challenges.get(0)[1];
+                challenges.remove(0);
+            }
+            titleTxt.setText(title);
+            instructionTxt.setText(instruction);
+            descriptionTxt.setText("Please click which team/s had to drink");
+        } else {
+            updateInstruction(false);
+        }
     }
 
     public void setUpDrinkIfYouHave(){
         String instruction = "";
         if (drinkIfYouHave.size()>0){
-            instruction = "Drink if you have ever " + drinkIfYouHave.get(0) + ".";
+            instruction = "Drink if you have ever " + drinkIfYouHave.get(0);
             drinkIfYouHave.remove(0);
+            //
+            titleTxt.setText("TRUTH");
+            instructionTxt.setText(instruction);
+            descriptionTxt.setText("If a teammate drinks, the whole team drinks.\nPlease click which team/s had to drink");
         } else{
             instruction = "All drinkIfYouHave used up :/"; //just for error checking
         }
-        titleTxt.setText("TRUTH");
-        instructionTxt.setText(instruction);
-        descriptionTxt.setText("If a teammate drinks, the whole team drinks. Please click which team/s had to drink.");
     }
 
-    public void setUpTargeted(){
-        //
+    public void setUpTargetedOnceOff(){
+        String instruction = "";
+        //once off
+        Player randPlayer = players[(int)(Math.random()*noPlayers)]; //random player
+        if (targetedOnceOff.size()>0){
+            instruction = randPlayer.getName() + ", " + targetedOnceOff.get(0);
+            targetedOnceOff.remove(0);
+            //
+            titleTxt.setText("TARGETED");
+            instructionTxt.setText(instruction);
+            descriptionTxt.setText("Please click which team/s had to drink");
+        } else {
+            updateInstruction(false);
+        }
     }
 
     public void setUpGeneralRules(){
-        //
+        //each one lasts at least 6 rounds?
+        String title = "GROUP RULE";
+        String instruction = "";
+        Boolean ruleEnded = false;
+        int maxRulesInPlay = 2;
+        if (generalRules.size()>0){
+            //check if any of the current rules have been in play for too long
+            for (int i = 0; i< currGeneralRules.size();i++){
+                if (currGeneralRules.get(i).isTooOld()){
+                    //remove and indicate that rule is no longer in play
+                    title = title + " OVER";
+                    instruction = currGeneralRules.get(i).getName() + " is no longer in play";
+                    currGeneralRules.remove(i);
+                    ruleEnded = true;
+                    break;
+                }
+            }
+            //roundsSinceLastGroupRule bit causes a glitch where the screen just goes to "GROUP RULE" title and nothing else
+            if (!ruleEnded && roundsSinceLastGroupRule>=minRoundsSinceLastGroupRule){
+                roundsSinceLastGroupRule= 0;
+                if (currGeneralRules.size()<3){ //i.e. do not add new rule if max no of rules has been reached
+                    currGeneralRules.add(new Rule(generalRules.get(0)));
+                    instruction = generalRules.get(0);
+                    generalRules.remove(0);
+                    titleTxt.setText(title);
+                    instructionTxt.setText(instruction);
+                    descriptionTxt.setText("");
+                } else {
+                    updateInstruction(false);
+                }
+            } else if (roundsSinceLastGroupRule<minRoundsSinceLastGroupRule){
+                updateInstruction(false);
+            }
+        } else {
+            updateInstruction(false);
+
+        }
+
     }
 
     public void setUpGroupInstructions(){
         //
+        String instruction = "";
+        if (groupInstructions.size()>0){
+            instruction = groupInstructions.get(0);
+            groupInstructions.remove(0);
+            //
+            titleTxt.setText("EVERYONE");
+            instructionTxt.setText(instruction);
+            descriptionTxt.setText("");
+        } else {
+            instruction = "All GroupInstructions used up :/"; //just for error checking
+        }
     }
 
     public void setUpWouldYouRather(){
         //
+
+        titleTxt.setText("WOULD YOU RATHER");
     }
 
     //get weighted random game type i.e. some options are weighted
     public GameType getRandGameType(){
         GameType gameType = null; //will return null if an error occurs
         int randValue =(int) (Math.random()*100 + 1);
+        Log.d("randValue","randValue: "+randValue);
         if (randValue<=16){
             gameType = GameType.Categories;
         } else if (randValue<=26){
@@ -302,7 +419,6 @@ public class MainScreen extends AppCompatActivity {
             //randomise
             Collections.shuffle(groupInstructions);
 
-            //TODO: fix typo in variable naming of targeted :/
             //targetedOnceOff
             targetedOnceOff= new ArrayList<String>();
             fileName = "TargetedOnceOff.txt";

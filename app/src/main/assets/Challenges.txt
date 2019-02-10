@@ -1,0 +1,8 @@
+Heads or tails|One person from each team calls heads or tails, the loser/s of the coin toss must drink.
+Red or Black|One person from each team calls red or black, if they choose the incorrect card color they must drink.
+Rock Paper Scissors|One person from each team plays rock paper scissors with each other, loser/s must drink
+Numbers|Each person takes turns turns saying a number between 1 and 9, when the sum of these numbers is equal to 50 or greater the last person that said a number drinks
+Coinage|One person from each team must vs the other team/s, the first person to get a coin in the bowl wins and the other team/s must drink.
+Flippy Cup|One person from each team must vs the other team/s, the first person to land a cup wins and the other team/s must drink.
+Waterfall|The team that continues the waterfall for the longest wins and the losing team/teams must drink again.
+Downage|One person from each time must race each other to down their drink first. Loser/losers must drink again.
